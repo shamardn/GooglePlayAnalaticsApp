@@ -1,33 +1,34 @@
-import model.GooglePlayApp
+import model.App
 import java.io.File
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 class CSVParser {
     private val file = File("src/main/google_play.csv")
-    fun parseCSV(): MutableList<GooglePlayApp> {
-        val googlePlayApps = mutableListOf<GooglePlayApp>()
+    fun parseCSV(): MutableList<App> {
+        val apps = mutableListOf<App>()
         file.forEachLine {
-            val apps = it.split(",")
-            googlePlayApps.add(
-                GooglePlayApp(
-                    appName = apps[0],
-                    company = apps[1],
-                    category = apps[2],
-                    updated = stringToDate(apps[3]),
-                    size = megaByteConverter(apps[4]),
-                    installs = stringToLongNum(apps[5]),
-                    requiresAndroid = arrangeRequiresAndroidData(apps[7]),
+            val lineList = it.split(",")
+            apps.add(
+                App(
+                    appName = lineList[0],
+                    company = lineList[1],
+                    category = lineList[2],
+                    updated = stringToDate(lineList[3]),
+                    size = megaByteConverter(lineList[4]),
+                    installs = stringToLongNum(lineList[5]),
+                    requiresAndroid = arrangeRequiresAndroidData(lineList[7]),
                 )
             )
         }
-        return googlePlayApps
+        return apps
     }
 
     // convert from String to Date
     private fun stringToDate(value: String): LocalDate {
         return LocalDate.parse(value, DateTimeFormatter.ofPattern("MMMM d yyyy"))
     }
+
 
     // convert from String to Long Number
     private fun stringToLongNum(value: String): Long {

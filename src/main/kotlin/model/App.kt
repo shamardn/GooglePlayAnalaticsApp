@@ -2,7 +2,7 @@ package model
 
 import java.time.LocalDate
 
-class GooglePlayApp(
+class App(
     var appName: String,
     var company: String,
     var category: String,
