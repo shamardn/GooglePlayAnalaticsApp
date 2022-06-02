@@ -401,9 +401,9 @@ internal class FriedChickenTest{
     }
 
     @Test
-    fun should_ReturnAllAppNameOfList_When_TheListOfAppsIsCorrectAndContainsLessThan9Apps() {
-        // given list of google play apps have 5 element
-        val appList: MutableList<App> = mutableListOf()
+    fun should_ReturnEveryLargestApp_When_TheListOfAppsContainsLessThan9Apps() {
+        // given list of apps have 5 element
+        val appList = mutableListOf<App>()
         appList.add(
             App(
                 "Slice: Pizza Delivery-Pick Up", "Slice Pizza App", "Food & Drink",
@@ -439,28 +439,25 @@ internal class FriedChickenTest{
                 762.3, 4000, "4.1 and up"
             )
         )
-
+        val listOfLargestApps = mutableListOf<App>()
+        listOfLargestApps.add(appList[4])
+        listOfLargestApps.add(appList[3])
+        listOfLargestApps.add(appList[0])
+        listOfLargestApps.add(appList[1])
+        listOfLargestApps.add(appList[2])
         // when fined the largest10 app of list
-        val result = appAnalyzer.findLargest10App(appList)
+        val result = appAnalyzer.getLargest10Apps(appList)
         // then
-        assertEquals(
-            mutableListOf(
-                "Dinosaur Airport:Game for kids",
-                "Garage Master - games for kids",
-                "Slice: Pizza Delivery-Pick Up",
-                "Crazy Pusher",
-                "Baby Game for 2 3 4 Year Old"
-            ), result
-        )
+        assertEquals(listOfLargestApps, result)
     }
 
     @Test
-    fun should_ReturnNullValueAndNoLargestApp_When_TheListOfAppsIsEmpty() {
-        // given empty list of google play apps
-        val appList : MutableList<App> = mutableListOf()
+    fun should_ReturnNull_When_TheListOfAppsIsEmpty() {
+        // given empty list of apps
+        val appList = mutableListOf<App>()
 
         // when find the top installed apps name
-        val result = appAnalyzer.findLargest10App(appList)
+        val result = appAnalyzer.getLargest10Apps(appList)
         // then
         Assertions.assertNull(result)
     }
