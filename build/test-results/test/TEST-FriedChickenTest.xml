@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="FriedChickenTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2022-06-02T23:05:45" hostname="SHAMARDN" time="0.198">
+  <properties/>
+  <testcase name="should_ReturnFirstApp_When_ListHasOnlyOneApp()" classname="FriedChickenTest" time="0.066"/>
+  <testcase name="should_ReturnNull_When_HaveEmptyList()" classname="FriedChickenTest" time="0.024"/>
+  <testcase name="should_Return_33point33_When_ListHaveAppsRequiredAndroid9AndUp()" classname="FriedChickenTest" time="0.007"/>
+  <testcase name="should_ReturnZero_When_HaveEmptyList()" classname="FriedChickenTest" time="0.002"/>
+  <testcase name="should_Return33point33Percent_When_MedicalAppsAreOneThirdOfAppsList()" classname="FriedChickenTest" time="0.002"/>
+  <testcase name="should_ReturnHundredPercent_When_HaveListOfMedicalAppsOnly()" classname="FriedChickenTest" time="0.002"/>
+  <testcase name="should_ReturnZero_When_NoMedicalAppInTheAppsList()" classname="FriedChickenTest" time="0.002"/>
+  <testcase name="should_ReturnZero_When_HaveListWithNoAnyGoogleApp()" classname="FriedChickenTest" time="0.015"/>
+  <testcase name="should_ReturnZero_When_ListIsEmpty()" classname="FriedChickenTest" time="0.001"/>
+  <testcase name="should_ReturnZero_When_HaveEmptyAppsList()" classname="FriedChickenTest" time="0.001"/>
+  <testcase name="should_ReturnNumber1_When_HaveListWith1GoogleApp()" classname="FriedChickenTest" time="0.003"/>
+  <testcase name="should_ReturnZero_When_ListHasNotAppRequiredAndroid9AndUp()" classname="FriedChickenTest" time="0.002"/>
+  <testcase name="should_ReturnOldestApp_When_HaveListWithMultiApps()" classname="FriedChickenTest" time="0.002"/>
+  <testcase name="should_ReturnNullValueAndNoLargestApp_When_TheListOfAppsIsEmpty()" classname="FriedChickenTest" time="0.007"/>
+  <testcase name="should_ReturnZero_When_HaveEmptyCompanyValue()" classname="FriedChickenTest" time="0.003"/>
+  <testcase name="should_ReturnAllAppNameOfList_When_TheListOfAppsIsCorrectAndContainsLessThan9Apps()" classname="FriedChickenTest" time="0.024"/>
+  <testcase name="should_ReturnLargest10Apps_When_TheListOfAppsContainsMoreThan9Apps()" classname="FriedChickenTest" time="0.017"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
