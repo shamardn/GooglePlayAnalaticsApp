@@ -315,14 +315,14 @@ internal class FriedChickenTest{
             App(
                 "FOX 4 Dallas-Fort Worth: Weather", "Fox Television Stations Inc.",
                 "Weather", LocalDate.parse("March 27 2022", DateTimeFormatter.ofPattern("MMMM d yyyy")),
-                98.1, 2000, "8.0 and up"
+                0.11, 2000, "8.0 and up"
             )
         )
         appList.add(
             App(
                 "Eyes : Nonogram", "GAMEFOX", "Puzzle",
                 LocalDate.parse("May 13 2022", DateTimeFormatter.ofPattern("MMMM d yyyy")),
-                265.0, 1500, "5.0 and up"
+                0.23, 1500, "5.0 and up"
             )
         )
         appList.add(
@@ -336,7 +336,7 @@ internal class FriedChickenTest{
             App(
                 "Slice: Pizza Delivery-Pick Up", "Slice Pizza App", "Food & Drink",
                 LocalDate.parse("May 13 2022", DateTimeFormatter.ofPattern("MMMM d yyyy")),
-                62.2, 2500, "7.0 and up"
+                2.2, 2500, "7.0 and up"
             )
         )
         appList.add(
@@ -350,92 +350,60 @@ internal class FriedChickenTest{
             App(
                 "Crazy Pusher", "Borg Studio", "Casino",
                 LocalDate.parse("February 2 2019", DateTimeFormatter.ofPattern("MMMM d yyyy")),
-                1123.8, 3000, "4.1 and up"
+                112.8, 3000, "4.1 and up"
             )
         )
         appList.add(
             App(
                 "Baby Game for 2 3 4 Year Old", "IDZ Digital Private Limited", "Educational",
                 LocalDate.parse("December 10 2022", DateTimeFormatter.ofPattern("MMMM d yyyy")),
-                1532.0, 2800, "5.2 and up"
+                532.0, 2800, "5.2 and up"
             )
         )
         appList.add(
             App(
                 "Garage Master - games for kids", "KIN GO GAMES FOR KIDS AND TODDLERS", "Educational",
                 LocalDate.parse("March 15 2022", DateTimeFormatter.ofPattern("MMMM d yyyy")),
-                91.3, 2600, "4.1 and up"
+                691.3, 2600, "4.1 and up"
             )
         )
         appList.add(
             App(
                 "Manta: Comics & Graphic Novels", "RIDI Corporation", "Comics",
                 LocalDate.parse("May 16 2022", DateTimeFormatter.ofPattern("MMMM d yyyy")),
-                75.4, 2300, "5.0 and up"
+                1150.2, 2300, "5.0 and up"
             )
         )
         appList.add(
             App(
                 "Sago Mini School (Kids 2-5)", "Sago Mini", "Education",
                 LocalDate.parse("February 24 2022", DateTimeFormatter.ofPattern("MMMM d yyyy")),
-                52.0, 800, "4.4 and up"
-            )
-        )
-        appList.add(
-            App(
-                "Rolling Luck: Win Real Money", "Shape Keeper Ltd", "Casino",
-                LocalDate.parse("May 18 2022", DateTimeFormatter.ofPattern("MMMM d yyyy")),
-                52.0, 1100, "5.0 and up"
-            )
-        )
-        appList.add(
-            App(
-                "StyleSeat: Book Hair & Beauty", "Styleseat", "Beauty",
-                LocalDate.parse("May 18 2022", DateTimeFormatter.ofPattern("MMMM d yyyy")),
-                800.0, 2300, "5.1 and up"
-            )
-        )
-        appList.add(
-            App(
-                "Dinosaur Airport:Game for kids", "Yateland - Learning Games For Kids", "Educational",
-                LocalDate.parse("May 18 2022", DateTimeFormatter.ofPattern("MMMM d yyyy")),
-                1045.0, 4000, "4.1 and up"
-            )
-        )
-        appList.add(
-            App(
-                "myAudi", "Audi", "Auto & Vehicles",
-                LocalDate.parse("May 10 2022", DateTimeFormatter.ofPattern("MMMM d yyyy")),
-                67.0, 1250, "8.0 and up"
+                1552.0, 800, "4.4 and up"
             )
         )
 
         val listOfLargest10Apps = mutableListOf<App>()
+        listOfLargest10Apps.add(appList[10])
+        listOfLargest10Apps.add(appList[9])
+        listOfLargest10Apps.add(appList[8])
         listOfLargest10Apps.add(appList[7])
         listOfLargest10Apps.add(appList[6])
-        listOfLargest10Apps.add(appList[13])
-        listOfLargest10Apps.add(appList[12])
+        listOfLargest10Apps.add(appList[5])
+        listOfLargest10Apps.add(appList[4])
+        listOfLargest10Apps.add(appList[3])
         listOfLargest10Apps.add(appList[2])
         listOfLargest10Apps.add(appList[1])
-        listOfLargest10Apps.add(appList[8])
-        listOfLargest10Apps.add(appList[9])
-        listOfLargest10Apps.add(appList[14])
-        listOfLargest10Apps.add(appList[4])
-        listOfLargest10Apps.add(appList[5])
-        listOfLargest10Apps.add(appList[10])
-        listOfLargest10Apps.add(appList[11])
-        listOfLargest10Apps.add(appList[3])
-        listOfLargest10Apps.add(appList[0])
+
         // when fined the largest10 app of the list
-        val result = appAnalyzer.findLargest10App(appList)
+        val result = appAnalyzer.getLargest10Apps(appList)
         // then
         assertEquals(listOfLargest10Apps, result)
     }
 
     @Test
-    fun should_ReturnAllAppNameOfList_When_TheListOfAppsIsCorrectAndContainsLessThan9Apps() {
-        // given list of google play apps have 5 element
-        val appList: MutableList<App> = mutableListOf()
+    fun should_ReturnEveryLargestApp_When_TheListOfAppsContainsLessThan9Apps() {
+        // given list of apps have 5 element
+        val appList = mutableListOf<App>()
         appList.add(
             App(
                 "Slice: Pizza Delivery-Pick Up", "Slice Pizza App", "Food & Drink",
@@ -471,28 +439,25 @@ internal class FriedChickenTest{
                 762.3, 4000, "4.1 and up"
             )
         )
-
+        val listOfLargestApps = mutableListOf<App>()
+        listOfLargestApps.add(appList[4])
+        listOfLargestApps.add(appList[3])
+        listOfLargestApps.add(appList[0])
+        listOfLargestApps.add(appList[1])
+        listOfLargestApps.add(appList[2])
         // when fined the largest10 app of list
-        val result = appAnalyzer.findLargest10App(appList)
+        val result = appAnalyzer.getLargest10Apps(appList)
         // then
-        assertEquals(
-            mutableListOf(
-                "Dinosaur Airport:Game for kids",
-                "Garage Master - games for kids",
-                "Slice: Pizza Delivery-Pick Up",
-                "Crazy Pusher",
-                "Baby Game for 2 3 4 Year Old"
-            ), result
-        )
+        assertEquals(listOfLargestApps, result)
     }
 
     @Test
-    fun should_ReturnNullValueAndNoLargestApp_When_TheListOfAppsIsEmpty() {
-        // given empty list of google play apps
-        val appList : MutableList<App> = mutableListOf()
+    fun should_ReturnNull_When_TheListOfAppsIsEmpty() {
+        // given empty list of apps
+        val appList = mutableListOf<App>()
 
         // when find the top installed apps name
-        val result = appAnalyzer.findLargest10App(appList)
+        val result = appAnalyzer.getLargest10Apps(appList)
         // then
         Assertions.assertNull(result)
     }
