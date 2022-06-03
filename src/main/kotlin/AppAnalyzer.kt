@@ -1,4 +1,5 @@
 import model.App
+import java.text.SimpleDateFormat
 import kotlin.math.roundToInt
 
 class AppAnalyzer {
@@ -177,4 +178,33 @@ class AppAnalyzer {
             return null
         return listOfAppName
     }
+
+    /**
+     * Fried Chicken Clan fixes
+     */
+    fun AppAnalyzer.objectDateupdate(listApp:MutableList<App>):String?{
+//        return if (listApp.isEmpty()) {
+//            null
+//        } else {
+//            var oldestApp = listApp[0]
+//            listApp.forEach {
+//                if (it.updated < oldestApp.updated) {
+//                    oldestApp = it
+//                }
+//            }
+//            oldestApp.appName
+//        }
+
+        val newMap = mutableMapOf<String,Long>()
+
+        listApp.forEach {
+            val text = it.updated
+            val formatter = SimpleDateFormat("MMMM dd yyyy")
+            val date = formatter.parse(text.toString()).time
+            newMap[it.appName] = date
+        }
+        val map = newMap.toList().sortedBy { (_, value) -> value}.toMap()
+        return map.keys.toList()[0]
+    }
+
 }
