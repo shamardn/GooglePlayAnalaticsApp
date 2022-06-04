@@ -2,7 +2,7 @@ package model
 
 import java.time.LocalDate
 
-class App(
+data class App(
     var appName: String,
     var company: String,
     var category: String,
@@ -10,5 +10,4 @@ class App(
     var size: Double,
     var installs: Long,
     var requiresAndroid: String,
-) {
-}
+)
