@@ -8,9 +8,9 @@ fun main() {
 
     val listString = "march 7 2019"
 
-    with(AppAnalyzer()){
-        println(listString.convertDateStringToDateObject())
-    }
+//    with(AppAnalyzer()){
+//        println(listString.convertDateStringToDateObject())
+//    }
 }
 
 

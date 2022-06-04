@@ -84,12 +84,10 @@ class AppAnalyzer {
     /**
      * Fried Chicken Clan fixes
      */
-    @Suppress("DEPRECATION")
-    fun getOldestApp(appsList: MutableList<App>): Any? {
+    fun getOldestApp(appsList: List<App>): App? {
         return if (appsList.isEmpty()) {
             null
-        }
-        else {
+        } else {
             var oldestApp = appsList[0]
             appsList.forEach {
                 if (it.updated < oldestApp.updated) {
@@ -98,7 +96,6 @@ class AppAnalyzer {
             }
             oldestApp
         }
-
     }
     //endregion
 
@@ -186,15 +183,42 @@ class AppAnalyzer {
     /**
      * Fried Chicken Clan fixes
      */
-    /**
-     * an extension function to convert the string of date to an object
-     * from type Date which should be found in java.utils package.
-     */
-       fun String.convertDateStringToDateObject(): Date?{
-            val formatter = SimpleDateFormat("MMMM d yyyy")
-            val date = formatter.parse(this)
-            return date
-}
+    fun AppAnalyzer.objectDateupdate(listApp:MutableList<App>):String?{
+//        return if (listApp.isEmpty()) {
+//            null
+//        } else {
+//            var oldestApp = listApp[0]
+//            listApp.forEach {
+//                if (it.updated < oldestApp.updated) {
+//                    oldestApp = it
+//                }
+//            }
+//            oldestApp.appName
+//        }
 
+        val newMap = mutableMapOf<String,Long>()
+
+        listApp.forEach {
+            val text = it.updated
+            val formatter = SimpleDateFormat("MMMM dd yyyy")
+            val date = formatter.parse(text.toString()).time
+            newMap[it.appName] = date
+        }
+        val map = newMap.toList().sortedBy { (_, value) -> value}.toMap()
+        return map.keys.toList()[0]
+    }
+
+    /**
+     * Fried Chicken new fun
+     */
+    fun getLargestAppSizeDevelopedByMeta(appsList: MutableList<App>): App? {
+        return if(appsList.isNotEmpty()) {
+            appsList.filter {
+                it.company.contains("Meta Platforms Inc")
+            }.maxByOrNull { it.size }
+        }else{
+            null
+        }
+    }
 
 }
