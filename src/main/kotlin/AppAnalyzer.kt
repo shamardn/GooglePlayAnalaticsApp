@@ -1,4 +1,6 @@
 import model.App
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.math.roundToInt
 
 class AppAnalyzer {
@@ -176,5 +178,31 @@ class AppAnalyzer {
         if (listOfAppName.size == 0)
             return null
         return listOfAppName
+    }
+
+
+
+    /**
+     * an extension function to convert the string of different sizes to a unique unit.
+     */
+    // "923.56K"
+    // "123.56M"
+    // "1.56G"
+    fun String.convertSizeStringToMega(): Double?{
+        var size = 0.0
+        // 1. check if it is (Varies with device) return 0
+        if (this == "Varies with device") return size
+        // 2. check if megabytes then remove it and convert to double
+        else if (this.contains("M")) {
+            size = this.replace("M", "").toDouble()
+            // 3. check if kilobytes then remove it and convert to megabyte double
+        } else if (this.contains("K")) {
+            val num = (this.replace("K", "").toDouble() / 1024.0)
+            size = String.format("%.4f",num).toDouble()
+            // 4. check if gigabyte then remove it and convert to megabyte double
+        } else if (this.contains("G")) {
+            size = this.replace("G", "").toDouble() * 1024.0
+        }
+        return size
     }
 }

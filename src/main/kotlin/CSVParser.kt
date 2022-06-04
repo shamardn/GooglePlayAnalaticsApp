@@ -41,7 +41,6 @@ class CSVParser {
         return value
     }
 
-
     // convert from GB or KB to MB
     private fun megaByteConverter(value: String): Double {
         var size = 0.0
